@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  nginx:
+    build:
+      context: 'nginx'
+    restart: always
+    ports:
+      - "2019:80"
+  web:
+    build:
+      context: '.'
+    restart: always
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./db.sqlite3:/app/db.sqlite3
